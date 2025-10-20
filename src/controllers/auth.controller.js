@@ -9,9 +9,13 @@ export const registerUser = async (req, res) => {
   try {
     const { fullName, email, password } = req.body;
 
+    if (!fullName || !email || !password) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
     const isUserAlreadyExists = await userModel.findOne({ email });
     if (isUserAlreadyExists) {
-      return res.status(400).send("User already exists");
+      return res.status(409).json({ message: "User already exists" });
     }
 
     const hashPassword = await bcrypt.hash(password, 10);
