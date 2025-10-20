@@ -14,3 +14,5 @@ const dbConnect = async () => {
 };
 
 export default dbConnect;
+
+// connection successful 
