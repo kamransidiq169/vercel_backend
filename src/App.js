@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 })
 
 app.use(cors({
-    origin: "https://vercel-backend-psi-wheat.vercel.app",
+    origin: "https://vercel-frontend-uneh.vercel.app",
     credentials: true
 }))
 
