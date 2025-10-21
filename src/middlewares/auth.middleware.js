@@ -12,7 +12,7 @@ if(!token){
 }
 
 try {
-    const decoded= jwt.verify(token,"kamran")
+    const decoded= jwt.verify(token,process.env.JWT_SECRET)
     const foodPartner= await foodPartnerModel.findById(decoded.id)
         if (!foodPartner) {
       return res.status(401).json({ message: "Food partner not found" });
@@ -36,7 +36,7 @@ if(!token){
 }
 
 try {
-    const decoded= jwt.verify(token,"kamran")
+    const decoded= jwt.verify(token,process.env.JWT_SECRET)
     const foodUser= await foodPartnerModel.findById(decoded.id)
         if (!foodUser) {
       return res.status(401).json({ message: "User not found" });
