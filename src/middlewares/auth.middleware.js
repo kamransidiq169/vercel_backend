@@ -1,5 +1,5 @@
 import foodPartnerModel from "../models/foodpartner.model.js";
-import userModel from "../models/user.model.js";
+//import userModel from "../models/user.model.js";
 import jwt from 'jsonwebtoken'
 
 export const authFoodPartnerMiddleware=async(req,res,next)=>{
@@ -37,7 +37,7 @@ if(!token){
 
 try {
     const decoded= jwt.verify(token,process.env.JWT_SECRET)
-    const foodUser= await userModel.findById(decoded.id)
+    const foodUser= await foodPartnerModel.findById(decoded.id)
         if (!foodUser) {
       return res.status(401).json({ message: "User not found" });
     }
