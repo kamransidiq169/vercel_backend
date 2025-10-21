@@ -96,11 +96,16 @@ export const registerFoodPartnerUser=async(req,res)=>{
 
    const hashPassword = await bcrypt.hash(password,10)
    
-   const FoodUser=foodPartnerModel.create({businessName,email,password:hashPassword,phone,address,contactName})
+   const FoodUser=await foodPartnerModel.create({businessName,email,password:hashPassword,phone,address,contactName})
 
   const token=jwt.sign({id:FoodUser._id},process.env.JWT_SECRET)
 
-   res.cookie("token",token)
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "None", // or "Strict" or "None" depending on frontend/backend setup
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  });
 
    res.status(201).json({
     message:"FoodUser registered successfully",
