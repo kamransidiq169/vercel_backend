@@ -130,7 +130,7 @@ export const loginFoodPartnerUser = async (req,res)=>{
      res.cookie("token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "Lax", // or "Strict" or "None" depending on frontend/backend setup
+    sameSite: "None", // or "Strict" or "None" depending on frontend/backend setup
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   });
 
