@@ -6,8 +6,6 @@ import * as authMiddleware from "../middlewares/auth.middleware.js";
 
 import multer from 'multer'
 
-import multer from 'multer';
-
 const upload = multer({
   limits: { fileSize: 100 * 1024 * 1024 }, // 100MB
 });
