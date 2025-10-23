@@ -6,8 +6,8 @@ import cors from 'cors'
 const app = express()
 
 app.use(cookieParser())
-app.use(express.json({ limit: '300mb' }));
-app.use(express.urlencoded({ limit: '300mb', extended: true }));
+app.use(express.json({ limit: '1000mb' }));
+app.use(express.urlencoded({ limit: '1000mb', extended: true }));
 
 app.get("/", (req, res) => {
     res.send("hii I am kamran")
