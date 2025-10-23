@@ -6,9 +6,11 @@ import * as authMiddleware from "../middlewares/auth.middleware.js";
 
 import multer from 'multer'
 
-const upload=multer({
-    storage:multer.memoryStorage()
-})
+import multer from 'multer';
+
+const upload = multer({
+  limits: { fileSize: 100 * 1024 * 1024 }, // 100MB
+});
 // POST /api/food/ [protected]
 router.post("/",authMiddleware.authFoodPartnerMiddleware,upload.single("video"),foodController.createFood)
 // GET /api/food/ [protected]
